@@ -45,7 +45,7 @@ object FileStream {
       )
     .as[Joined]
 
-    val result = joinedDS.groupByKey(_.Class).agg(typed.avg(_.probability),typed.sum(_.rowID))
+    val result = joinedDS.groupByKey(_.Class).agg(typed.avg(_.probability),typed.count(_.rowID))
       .withColumnRenamed("TypedAverage(com.karolsudol.analytics.Schema$Joined)", "AvgProb")
       .withColumnRenamed("TypedSumDouble(com.karolsudol.analytics.Schema$Joined)", "Count")
       .withColumnRenamed("value", "Class")

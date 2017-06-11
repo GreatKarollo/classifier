@@ -24,51 +24,51 @@ object FileWriter {
 
     val rawDS: Dataset[RawData] = spark.read.parquet(s"${dataInPath}dsNullDropped.parquet").as[RawData]
 
-    val rawDS_1to1000: Dataset[RawData] = rawDS.filter(_.rowID <= 1000).as[RawData]
-    val rawDS_1000to2000: Dataset[RawData] = rawDS.filter(_.rowID <= 2000).filter(_.rowID > 1000).as[RawData]
-    val rawDS_2000to3000: Dataset[RawData] = rawDS.filter(_.rowID <= 3000).filter(_.rowID > 2000).as[RawData]
-    val rawDS_3000to4000: Dataset[RawData] = rawDS.filter(_.rowID <= 4000).filter(_.rowID > 3000).as[RawData]
-    val rawDS_gt4000: Dataset[RawData] = rawDS.filter(_.rowID > 4000).as[RawData]
+    val rawDS_1to300: Dataset[RawData] = rawDS.filter(_.rowID <= 300).as[RawData]
+    val rawDS_300to400: Dataset[RawData] = rawDS.filter(_.rowID <= 400).filter(_.rowID > 300).as[RawData]
+    val rawDS_400to500: Dataset[RawData] = rawDS.filter(_.rowID <= 500).filter(_.rowID > 400).as[RawData]
+    val rawDS_500to600: Dataset[RawData] = rawDS.filter(_.rowID <= 600).filter(_.rowID > 500).as[RawData]
+    val rawDS_gt600: Dataset[RawData] = rawDS.filter(_.rowID > 600).as[RawData]
 
 
 
     println("****************")
     println("****************")
-    println("writing_rawDS_1to100")
-    rawDS_1to1000.show(20)
-    rawDS_1to1000.write.mode("overwrite").parquet("/OUT/streamFile.parquet")
-    Thread.sleep(1000*20)
-
-
-    println("****************")
-    println("****************")
-    println("writing_rawDS_100to200")
-    rawDS_1000to2000.show(20)
-    rawDS_1000to2000.write.mode("append").parquet("/OUT/streamFile.parquet")
-    Thread.sleep(1000*20)
-
-
-    println("****************")
-    println("****************")
-    println("writing_rawDS_200to300")
-    rawDS_2000to3000.show(20)
-    rawDS_2000to3000.write.mode("append").parquet("/OUT/streamFile.parquet")
+    println("writing_rawDS_1to300")
+    rawDS_1to300.show(20)
+    rawDS_1to300.write.mode("overwrite").parquet("/OUT/streamFile.parquet")
     Thread.sleep(1000*20)
 
 
     println("****************")
     println("****************")
     println("writing_rawDS_300to400")
-    rawDS_3000to4000.show(20)
-    rawDS_3000to4000.write.mode("append").parquet("/OUT/streamFile.parquet")
+    rawDS_300to400.show(20)
+    rawDS_300to400.write.mode("append").parquet("/OUT/streamFile.parquet")
     Thread.sleep(1000*20)
 
 
     println("****************")
     println("****************")
-    println("writing_rawDS_gt4000")
-    rawDS_gt4000.show(20)
-    rawDS_gt4000.write.mode("append").parquet("/OUT/streamFile.parquet")
+    println("writing_rawDS_400to500")
+    rawDS_400to500.show(20)
+    rawDS_400to500.write.mode("append").parquet("/OUT/streamFile.parquet")
+    Thread.sleep(1000*20)
+
+
+    println("****************")
+    println("****************")
+    println("writing_rawDS_500to600")
+    rawDS_500to600.show(20)
+    rawDS_500to600.write.mode("append").parquet("/OUT/streamFile.parquet")
+    Thread.sleep(1000*20)
+
+
+    println("****************")
+    println("****************")
+    println("writing_rawDS_gt600")
+    rawDS_gt600.show(20)
+    rawDS_gt600.write.mode("append").parquet("/OUT/streamFile.parquet")
     Thread.sleep(1000*20)
 
 
