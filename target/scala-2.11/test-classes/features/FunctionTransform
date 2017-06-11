@@ -1,0 +1,19 @@
+Feature: Stream Sum RowId
+  @wip
+the Filestream
+    Then result should be 1000
+
+As a Product User I want to predict outcome for new data source in real time
+
+  Scenario: Count the rows in the output query result
+    Given input datasets called "rawDS" and "streamDS" ouput "averageProbability" is:
+
+    +-----+----------------------------------------------------+
+    |value|TypedAverage(com.karolsudol.analytics.Schema$Joined)|
+    +-----+----------------------------------------------------+
+    |    1|                                  11.417322834645669|
+    |    0|                                   89.00432900432901|
+    +-----+----------------------------------------------------+
+
+    When I count the rows in the streaming query "averageProbability"
+    Then the result is '2'
