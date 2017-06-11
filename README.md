@@ -5,13 +5,6 @@ Project Details
 3. test using BDD
 4. output to console avg probability of prediction for each class and their occurencies count
 
-+-----+-----------------+-------+
-|Class|          AvgProb|  Count|
-+-----+-----------------+-------+
-|    1|23.71851851851852|23171.0|
-|    0|84.34080717488789|48649.0|
-+-----+-----------------+-------+
-
 *   FileWriter.scala appends input file
 
 *  FileStream.scala executes prediction
